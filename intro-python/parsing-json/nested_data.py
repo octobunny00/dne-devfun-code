@@ -25,7 +25,9 @@ SOFTWARE.
 
 import json
 import os
+from pprint import pprint
 
+intindex=0
 
 # Get the absolute path for the directory where this file is located "here"
 here = os.path.abspath(os.path.dirname(__file__))
@@ -33,6 +35,20 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 with open(os.path.join(here, "interfaces.json")) as file:
     # TODO: Parse the contents of the JSON file into a variable
+    json_text=file.read()
+
+json_data=json.loads(json_text)
+#pprint(json_data)
+
+for interface in json_data["ietf-interfaces:interfaces"]["interface"]:
+    #pprint(interface)
+    int_name=(json_data["ietf-interfaces:interfaces"]["interface"][intindex]["name"])
+    int_ipadd=(json_data["ietf-interfaces:interfaces"]["interface"][intindex]["ietf-ip:ipv4"]["address"][0]["ip"])
+    int_mask=(json_data["ietf-interfaces:interfaces"]["interface"][intindex]["ietf-ip:ipv4"]["address"][0]["netmask"])
+    print("interface name = {} address = {} netmask = {}".format(int_name, int_ipadd, int_mask))
+    intindex+=1
+
+#for interface in 
 
 
 # TODO: Loop through the interfaces in the JSON data and print out each
