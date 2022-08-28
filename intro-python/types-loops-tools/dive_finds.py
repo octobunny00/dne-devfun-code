@@ -36,7 +36,9 @@ DIVEFINDS = [
 
 def generate_find() -> str:
     """Use a random selection to determine the scuba diver's find."""
-    return random.choice(DIVEFINDS)
+    itemrand= random.choice(DIVEFINDS)
+    #print(itemrand)
+    return itemrand
 
 
 def calculate_number_items(number_dives):
@@ -55,8 +57,12 @@ def create_dive_finds(number_dives):
     # TODO: Create a message telling a scuba diver what they found by 
     # calling generate_find() and calculate_number_items() and 
     # then composing and returning the message and numbers.
+    
+    found_item = generate_find()
+    item_count = calculate_number_items(number_dives)
 
-    raise NotImplementedError()
+    return "in {} dives, you found {} {}" .format(number_dives, item_count,found_item)
+    #raise NotImplementedError()
 
 
 def main():
